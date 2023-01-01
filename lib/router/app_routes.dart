@@ -36,6 +36,12 @@ class AppRoutes {
       pagina: const CardPage(),
       icon: Icons.add_card,
     ),
+    MenuOptions(
+      route: "avatar",
+      nombre: "Avatar Page",
+      pagina: const AvatarPage(),
+      icon: Icons.supervised_user_circle_outlined,
+    ),
   ];
 
   static Map<String, Widget Function(BuildContext)> getAppRoutes() {
