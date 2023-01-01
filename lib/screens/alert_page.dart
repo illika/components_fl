@@ -5,10 +5,19 @@ class AlertPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Scaffold(
         body: Center(
-          child: Text("AlertPage"),
+          child: ElevatedButton(
+            onPressed: () {},
+            child: const Text("Mostrar Alerta"),
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(Icons.close),
         ),
       ),
     );
