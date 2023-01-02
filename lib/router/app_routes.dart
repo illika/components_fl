@@ -6,12 +6,12 @@ class AppRoutes {
   static const String initialRoute = "home";
 
   static final menuOptions = [
-    MenuOptions(
+    /*MenuOptions(
       route: "home",
       nombre: "Home Page",
       pagina: const HomePage(),
       icon: Icons.home,
-    ),
+    ),*/
     MenuOptions(
       route: "listView1",
       nombre: "ListView1 Page",
@@ -42,10 +42,17 @@ class AppRoutes {
       pagina: const AvatarPage(),
       icon: Icons.supervised_user_circle_outlined,
     ),
+    MenuOptions(
+      route: "animate",
+      nombre: "Animated Page",
+      pagina: const AnimatedPage(),
+      icon: Icons.play_arrow_outlined,
+    ),
   ];
 
   static Map<String, Widget Function(BuildContext)> getAppRoutes() {
     Map<String, Widget Function(BuildContext)> appRoute = {};
+    appRoute.addAll({"home": (_) => const HomePage()});
 
     for (final option in menuOptions) {
       appRoute.addAll({option.route: (_) => option.pagina});
