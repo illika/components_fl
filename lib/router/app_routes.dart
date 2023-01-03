@@ -1,4 +1,5 @@
 import 'package:fl_componentes/models/models.dart';
+import 'package:fl_componentes/screens/inputs_page.dart';
 import 'package:fl_componentes/screens/screens.dart';
 import 'package:flutter/material.dart';
 
@@ -47,6 +48,12 @@ class AppRoutes {
       nombre: "Animated Page",
       pagina: const AnimatedPage(),
       icon: Icons.play_arrow_outlined,
+    ),
+    MenuOptions(
+      route: "inputs",
+      nombre: "Inputs Page",
+      pagina: const InputsPage(),
+      icon: Icons.input_rounded,
     ),
   ];
 
