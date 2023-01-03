@@ -28,6 +28,7 @@ class InputsPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Form(
               key: myFormKey,
+              //autovalidateMode: AutovalidateMode.onUserInteraction,
               child: Column(
                 children: [
                   CustomInputField(
@@ -59,17 +60,41 @@ class InputsPage extends StatelessWidget {
                     formProperty: 'password',
                     formValues: formValue,
                   ),
+                  const SizedBox(height: 10),
+                  DropdownButtonFormField<String>(
+                    validator: (value) {
+                      if (value == null) return "Es requerido";
+                    },
+                    items: const [
+                      DropdownMenuItem(value: "Admin", child: Text("Admin")),
+                      DropdownMenuItem(
+                          value: "Superuser", child: Text("Superuser")),
+                      DropdownMenuItem(
+                          value: "Developer", child: Text("Developer")),
+                      DropdownMenuItem(
+                          value: "Developerjunior", child: Text("DeveloperJr")),
+                    ],
+                    onChanged: (value) {
+                      formValue["rol"] = value ?? "Admin";
+                    },
+                  ),
                   const SizedBox(height: 20),
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
-                        FocusScope.of(context).requestFocus(FocusNode());
+                        //FocusScope.of(context).requestFocus(FocusNode());
+                        FocusManager.instance.primaryFocus?.unfocus();
                         if (!myFormKey.currentState!.validate()) {
-                          print("no valido");
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text("Ingrese valores a los campos"),
+                                  duration: Duration(milliseconds: 1000)));
                           return;
                         }
-                        print(formValue);
+                        formValue.forEach((key, value) {
+                          debugPrint(value);
+                        });
                       },
                       child: const Text("Guardar"),
                     ),
