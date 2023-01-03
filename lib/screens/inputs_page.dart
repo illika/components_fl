@@ -64,6 +64,7 @@ class InputsPage extends StatelessWidget {
                   DropdownButtonFormField<String>(
                     validator: (value) {
                       if (value == null) return "Es requerido";
+                      return null;
                     },
                     items: const [
                       DropdownMenuItem(value: "Admin", child: Text("Admin")),

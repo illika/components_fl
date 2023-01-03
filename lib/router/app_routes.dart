@@ -1,5 +1,4 @@
 import 'package:fl_componentes/models/models.dart';
-import 'package:fl_componentes/screens/inputs_page.dart';
 import 'package:fl_componentes/screens/screens.dart';
 import 'package:flutter/material.dart';
 
@@ -54,6 +53,12 @@ class AppRoutes {
       nombre: "Inputs Page",
       pagina: const InputsPage(),
       icon: Icons.input_rounded,
+    ),
+    MenuOptions(
+      route: "slider",
+      nombre: "Slider Page",
+      pagina: const SliderPage(),
+      icon: Icons.slideshow_rounded,
     ),
   ];
 
