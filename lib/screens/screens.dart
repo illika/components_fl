@@ -4,6 +4,7 @@ export 'package:fl_componentes/screens/avatar_page.dart';
 export 'package:fl_componentes/screens/card_page.dart';
 export 'package:fl_componentes/screens/home_page.dart';
 export 'package:fl_componentes/screens/inputs_page.dart';
+export 'package:fl_componentes/screens/listview_builder_page.dart';
 export 'package:fl_componentes/screens/listview1_page.dart';
 export 'package:fl_componentes/screens/listview2_page.dart';
 export 'package:fl_componentes/screens/slider_page.dart';

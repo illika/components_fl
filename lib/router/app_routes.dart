@@ -60,6 +60,12 @@ class AppRoutes {
       pagina: const SliderPage(),
       icon: Icons.slideshow_rounded,
     ),
+    MenuOptions(
+      route: "listviewBuilder",
+      nombre: "ListviewBuilder Page",
+      pagina: const ListviewBuilderPage(),
+      icon: Icons.list_sharp,
+    ),
   ];
 
   static Map<String, Widget Function(BuildContext)> getAppRoutes() {
