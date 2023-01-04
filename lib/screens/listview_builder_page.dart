@@ -70,6 +70,14 @@ class _ListviewBuilderPageState extends State<ListviewBuilderPage> {
     );
   }
 
+  Future<void> onRefresh() async {
+    await Future.delayed(const Duration(milliseconds: 200));
+    final lastId = imagesId.last;
+    imagesId.clear();
+    imagesId.add(lastId + 1);
+    add10();
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -80,20 +88,24 @@ class _ListviewBuilderPageState extends State<ListviewBuilderPage> {
         removeBottom: true,
         child: Stack(
           children: [
-            ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              controller: _scrollController,
-              itemCount: imagesId.length,
-              itemBuilder: (_, int index) {
-                return FadeInImage(
-                  width: double.infinity,
-                  height: 300,
-                  fit: BoxFit.cover,
-                  placeholder: const AssetImage("jar-loading.gif"),
-                  image: NetworkImage(
-                      "https://picsum.photos/500/300?random=${imagesId[index]}"),
-                );
-              },
+            RefreshIndicator(
+              color: AppTheme.primary,
+              onRefresh: onRefresh,
+              child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                controller: _scrollController,
+                itemCount: imagesId.length,
+                itemBuilder: (_, int index) {
+                  return FadeInImage(
+                    width: double.infinity,
+                    height: 300,
+                    fit: BoxFit.cover,
+                    placeholder: const AssetImage("jar-loading.gif"),
+                    image: NetworkImage(
+                        "https://picsum.photos/500/300?random=${imagesId[index]}"),
+                  );
+                },
+              ),
             ),
             if (_isLoading)
               Positioned(
